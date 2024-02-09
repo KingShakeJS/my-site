@@ -1,0 +1,49 @@
+
+.img-thumdnail {
+    height: 200px;
+    width: 400px;
+}
+
+.main-content h2 {
+    font-size: xxx-large;
+}
+
+h3 a {
+    font-size: xx-large;
+}
+
+.post_tex > * {
+    margin-bottom: 2px;
+}
+
+.post_tex ul {
+    text-align: left;
+    margin-left: -45px;
+}
+
+.post_tex ul li {
+    display: inline;
+    font-size: smaller;
+}
+
+.post {
+    padding-top: 50px;
+}
+
+.sidebar {
+    padding-left: 20px;
+}
+
+.topics {
+    text-align: left;
+}
+
+.topics h3 {
+    margin-top: 10px;
+    padding-left: 45px;
+    font-size: xx-large;
+}
+
+
+
+

@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    font-family: "Cormorant Infant", serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #00008B;
+    font-size: x-large;
+}
+
+html, body {
+   height: 100%;
+    background-color: #00FFFF;
+}
+
+a {
+    color: #00008B;
+}
+
+a:hover {
+    transition: 0.3s;
+    color: #FF33B2;
+    background-color: #3FFF33;
+}
+
+input {
+    background-color: #1E90FF;
+    border-radius: 10px;
+    padding: 2px;
+    display: block;
+    width: 100%;
+
+}
+
+input:focus {
+    border: 2px solid #00008B;
+}
+.wraper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main{
+    flex: 1 1 auto;
+}
+
+

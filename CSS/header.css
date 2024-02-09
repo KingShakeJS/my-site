@@ -1,0 +1,67 @@
+
+.header {
+    background-color: #7FFFD4;
+    height: 70px;
+}
+
+h1 > a {
+    text-align: left;
+    margin-top: 5px;
+    font-size: xxx-large;
+}
+
+.header nav {
+    display: inline-flex;
+    justify-content: flex-end;
+}
+
+.header nav li {
+    margin-right: 40px;
+}
+
+.header nav li:last-child {
+    margin-right: 0;
+}
+
+.header ul {
+    margin-top: -6px;
+}
+
+.header li {
+    display: inline;
+}
+
+.header ul li a {
+    display: inline-block;
+    padding: 22px;
+}
+
+
+header ul li ul {
+    display: none;
+}
+
+header ul li:hover ul {
+    position: absolute;
+    top: 50px;
+    right: 250px;
+    z-index: 111;
+    display: flex;
+    flex-direction: column;
+}
+
+header ul li ul li {
+    width: 100%;
+}
+
+header ul li ul li a {
+    margin-top: 25px;
+    background-color: #7FFFD4;
+    width: 100%;
+}
+
+.vipadat > * {
+    margin-bottom: -25px;
+    text-align: right;
+}
+

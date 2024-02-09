@@ -1,0 +1,53 @@
+.slider-line img {
+
+    width: 1275px;
+}
+
+.slider {
+    border-radius: 10px;
+    height: 400px;
+    width: 1272px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.slider-line {
+
+    height: 400px;
+    width: 3816px;
+    display: flex;
+    position: relative;
+    left: 0;
+    transition: all ease 1.5s;
+}
+
+.slider-buttons {
+    display: inline-flex;
+    justify-content: space-around;
+    margin-top: 220px;
+}
+
+.slider-buttons img {
+    height: 100px;
+    width: 100px;
+}
+
+.c-slid {
+    margin-top: -282px;
+    text-align: center;
+}
+
+.c-slid {
+    margin-top: -282px;
+    text-align: center;
+    font-size: xxx-large;
+}
+
+#slider-prev {
+    margin-right: 806px;
+}
+h5{
+    margin-top: -10px;
+    margin-left: 200px;
+    color: red;
+}
