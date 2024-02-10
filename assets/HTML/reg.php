@@ -1,3 +1,5 @@
+<?php include ('./../../path.php');?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,6 +26,7 @@
     <!--    <link rel="stylesheet" href="../CSS/first-page.css">-->
     <!--    <link rel="stylesheet" href="../CSS/slider.css">-->
     <!--    <link rel="stylesheet" href="../CSS/single.css">-->
+    <link rel="stylesheet" href="../CSS/reg-log.css">
     <link rel="stylesheet" href="../CSS/footer.css">
 
     <title>site</title>
@@ -37,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-4">
-                    <h1><a href="./index.html">Мой Сайт</a></h1>
+                    <h1><a href="">Мой Сайт</a></h1>
                 </div>
                 <nav class="col-8">
                     <ul>
@@ -60,17 +63,40 @@
 
     <main class="main">
 
+        <div class="container-fluid reg-form">
+            <h2>Зарегистрируйтесь</h2>
+            <div>
+                <label>
+                    <p>имя</p>
+                    <input type="text">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <p>почтовый ящик</p>
+                    <input type="email">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <p>пароль</p>
+                    <input type="password">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <p>повторить пароль</p>
+                    <input type="password">
+                </label>
+            </div>
+            <button>Зарегистрироваться</button>
+            <a href="">Войти</a>
 
 
-
-
-
-
-
+        </div>
 
 
     </main>
-
 
 
     <footer class="footer container-fluid">
@@ -83,7 +109,4 @@
     </footer>
 
 
-
-
-
-</div>html>
+</div>

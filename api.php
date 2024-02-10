@@ -1,22 +1,33 @@
 <?php
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
+header('Access-Control-Allow-Methods: *');
+header('Access-Control-Allow-Credentials: true');
+header("Content-Type: application/json");
+
 global $con;
-include './connect.php';
+include './app/database/connect.php';
 
 
+$method = $_SERVER['REQUEST_METHOD'];
+$q = $_GET['q'];
+$params = explode('/', $q);
+$type = $params[0];
+$id = $params[1];
 
 
-$name='Anbnndr';
-$age=302;
-$login='Andnbmreee';
-$password='6545gbnmgf';
+function selectAll($table, $con)
+{
 
-$arDate=[
-    'n'=>$name,
-    'a'=>$age,
-    'l'=>$login,
-    'p'=>$password
-];
-$sql="INSERT users (name, age, login, password) VALUES(:n, :a, :l, :p)";
-$query=$con->prepare($sql);
-$query->execute($arDate);
+    $sql = "SELECT * FROM $table";
+    $users = $con->query($sql)->fetchAll(2);
+    print_r(json_encode($users));
+}
 
+
+if ($method === 'GET') {
+    if ($type === 'users') {
+        selectAll($type, $con);
+    }
+}

@@ -1,4 +1,4 @@
-
+<?php include ('./../../path.php');?>
 
 <!doctype html>
 <html lang="en">
@@ -39,7 +39,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-4">
-                    <h1><a href="./index.html">Мой Сайт</a></h1>
+                    <h1><a href="ind.html">Мой Сайт</a></h1>
                 </div>
                 <nav class="col-8">
                     <ul>
@@ -72,7 +72,7 @@
                     <div class="container row">
                         <div class="single__post row col-9">
                             <div class="img col-12">
-                                <img src="../assets/images/im2.jpg" alt="" class="img-thumdnail">
+                                <img src="../images/im2.jpg" alt="" class="img-thumdnail">
                                 <ul>
                                     <li>имя автора</li>
                                     <li>март 11, 2022</li>

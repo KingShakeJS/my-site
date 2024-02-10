@@ -1,3 +1,5 @@
+<?php include ('./../../path.php');?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-4">
-                    <h1><a href="">Мой Сайт</a></h1>
+                    <h1><a href=" ">Мой Сайт</a></h1>
                 </div>
                 <nav class="col-8">
                     <ul>
@@ -62,13 +64,8 @@
     <main class="main">
 
         <div class="container-fluid reg-form">
-            <h2>Зарегистрируйтесь</h2>
-            <div>
-                <label>
-                    <p>имя</p>
-                    <input type="text">
-                </label>
-            </div>
+            <h2>Авторизоваться</h2>
+
             <div>
                 <label>
                     <p>почтовый ящик</p>
@@ -81,14 +78,9 @@
                     <input type="password">
                 </label>
             </div>
-            <div>
-                <label>
-                    <p>повторить пароль</p>
-                    <input type="password">
-                </label>
-            </div>
-            <button>Зарегистрироваться</button>
-            <a href="">Войти</a>
+
+            <a>Зарегистрироваться</a>
+            <button href="">Войти</button>
 
 
         </div>
