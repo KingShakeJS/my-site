@@ -1,4 +1,3 @@
-<?php include ('./../../path.php');?>
 
 <!doctype html>
 <html lang="en">
@@ -68,28 +67,28 @@
             <div>
                 <label>
                     <p>имя</p>
-                    <input type="text">
+                    <input id="reg_name" type="text">
                 </label>
             </div>
             <div>
                 <label>
                     <p>почтовый ящик</p>
-                    <input type="email">
+                    <input id="reg_email" type="email">
                 </label>
             </div>
             <div>
                 <label>
                     <p>пароль</p>
-                    <input type="password">
+                    <input id="reg_password" type="password">
                 </label>
             </div>
             <div>
                 <label>
                     <p>повторить пароль</p>
-                    <input type="password">
+                    <input id="reg_second_password" type="password">
                 </label>
             </div>
-            <button>Зарегистрироваться</button>
+            <button id="reg_button" >Зарегистрироваться</button>
             <a href="">Войти</a>
 
 
@@ -110,3 +109,7 @@
 
 
 </div>
+
+
+<script src="../../ajax.js"></script>
+<script src="../JS/reg.js"></script>

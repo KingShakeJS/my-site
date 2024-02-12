@@ -36,4 +36,18 @@ if ($method === 'GET') {
     if ($type === 'users') {
         createData($type, $con, $_POST);
     }
+}elseif ($method==='PATCH') {
+    if ($type === 'users') {
+        if (isset($id)) {
+            $data = file_get_contents('php://input');
+            $data = json_decode($data, true);
+            updateDate($type, $id, $con, $data);
+        }
+    }
+}elseif ($method==="DELETE"){
+    if ($type==='users'){
+        if(isset($id)){
+            deleteData($type, $id, $con);
+        }
+    }
 }

@@ -71,4 +71,78 @@ function createData($table, $con, $data)
 }
 
 
+//редактирование данных в строке///////////////////////////////////////////////
+
+function updateDate($table, $id, $con, $data)
+{
+    $i = 0;
+    $str = '';
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+
+            $str = $str . $key ." = '" . $value . "'";
+        } else {
+
+            $str = $str .", ". $key . " = '$value'";
+        }
+
+        $i++;
+    }
+    $sql = "UPDATE $table SET $str WHERE id=$id";
+    $query = $con->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    http_response_code(200);
+    $res = [
+        "status" => true,
+        "message" => 'post is pomenan'
+    ];
+    print_r(json_encode($res));
+}
+
+function deleteData($table, $id, $con){
+    $sql="DELETE FROM $table WHERE `id`=$id";
+    $query = $con->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    $res = [
+        "status" => true,
+        "message" => 'post is ydalen'
+    ];
+    print_r(json_encode($res));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
