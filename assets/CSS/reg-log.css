@@ -1,11 +1,13 @@
-.reg-form{
+.reg-form {
     text-align: center;
     padding-top: 50px;
 }
-.reg-form h2{
+
+.reg-form h2 {
     font-size: xx-large;
 }
-.reg-form button{
+
+.reg-form button {
     background-color: #00BFFF;
     margin-top: 25px;
     padding: 10px;
@@ -13,12 +15,21 @@
     border-radius: 10px;
 
 }
-.reg-form input{
+
+.reg-form input {
     margin-top: -10px;
 }
-.reg-form a{
+
+.reg-form a {
     padding: 10px;
     border-radius: 10px;
+}
+
+#reg-error {
+    height: 25px;
+    margin-bottom: 15px;
+    color: red;
+    font-size: xxx-large;
 }
 
 

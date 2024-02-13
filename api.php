@@ -11,14 +11,11 @@ include './app/database/connect.php';
 include './app/database/querys.php';
 
 
-
 $method = $_SERVER['REQUEST_METHOD'];
 $q = $_GET['q'];
 $params = explode('/', $q);
 $type = $params[0];
 $id = $params[1];
-
-
 
 
 //тут само апи./////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,11 +29,11 @@ if ($method === 'GET') {
             selectAllOrOneId($type, $con);
         }
     }
-}elseif ($method === 'POST') {
+} elseif ($method === 'POST') {
     if ($type === 'users') {
         createData($type, $con, $_POST);
     }
-}elseif ($method==='PATCH') {
+} elseif ($method === 'PATCH') {
     if ($type === 'users') {
         if (isset($id)) {
             $data = file_get_contents('php://input');
@@ -44,10 +41,22 @@ if ($method === 'GET') {
             updateDate($type, $id, $con, $data);
         }
     }
-}elseif ($method==="DELETE"){
-    if ($type==='users'){
-        if(isset($id)){
+} elseif ($method === "DELETE") {
+    if ($type === 'users') {
+        if (isset($id)) {
             deleteData($type, $id, $con);
         }
     }
 }
+
+if ($method === 'POST') {
+    if ($type === 'reg-users') {
+        $ar = $type;
+        $par = explode('-', $ar);
+        getWhere($par[1], $con, $_POST);
+    }
+}
+
+
+
+

@@ -9,11 +9,10 @@ async function selectAllOrOneId() {
 
 }
 
-
 async function createData(inputData) {
 
     let formData = new FormData()
-    for(let key in inputData){
+    for (let key in inputData) {
 
 
         formData.append(key, inputData[key])
@@ -25,7 +24,7 @@ async function createData(inputData) {
     })
     const data = await res.json()
     if (data.status === true) {
-      console.log(data)
+        console.log(data)
     }
 }
 
@@ -54,6 +53,21 @@ async function deleteData(id) {
     if (data.status === true) {
 
     }
+}
+
+
+async function getWhere(whereDate) {
+    let formData = new FormData()
+    for (let key in whereDate) {
+        formData.append(key, whereDate[key])
+    }
+    let res = await fetch('http://localhost/my-site/reg-users', {
+        method: 'POST',
+        body: formData
+    })
+    let data = await res.json()
+    return data.status
+
 }
 
 

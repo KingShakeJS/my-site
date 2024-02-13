@@ -1,13 +1,15 @@
-.main-content h2{
+.main-content h2 {
     margin-left: 18px;
     font-size: xx-large;
 }
-.img li{
+
+.img li {
     display: inline;
     font-size: smaller;
 
 }
-.img ul{
+
+.img ul {
     margin-left: -46px;
     padding-top: 10px;
     padding-bottom: 10px;
