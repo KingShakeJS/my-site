@@ -68,7 +68,10 @@ function createData($table, $con, $data)
         "post_id" => $con->lastInsertId()
     ];
     print_r(json_encode($res));
+
+    return $con->lastInsertId();
 }
+
 
 
 //редактирование данных в строке///////////////////////////////////////////////
@@ -132,6 +135,7 @@ function getWhere($table, $con, $data)
     $query->execute();
     dbCheckError($query);
     $obj = $query->fetchAll();
+    dbCheckError($query);
     if ($obj === []) {
         http_response_code(404);
         $res = [

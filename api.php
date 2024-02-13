@@ -31,7 +31,9 @@ if ($method === 'GET') {
     }
 } elseif ($method === 'POST') {
     if ($type === 'users') {
-        createData($type, $con, $_POST);
+       $lastInsertId= createData($type, $con, $_POST);
+       $_SESSION[$id]=$lastInsertId;
+//       print_r($_SESSION[$id]);
     }
 } elseif ($method === 'PATCH') {
     if ($type === 'users') {
@@ -48,6 +50,9 @@ if ($method === 'GET') {
         }
     }
 }
+
+
+
 
 if ($method === 'POST') {
     if ($type === 'reg-users') {
