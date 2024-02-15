@@ -127,7 +127,7 @@ function deleteUser($id, $con)
 
 
 //получить строки по любым параметрам////////////////////////////////////////////////
-function getUsersWhere($con, $data)
+function getUsersWhere($con, $data, $notPrint = false)
 {
     $sql = "SELECT * FROM users";
     $i = 0;
@@ -153,31 +153,79 @@ function getUsersWhere($con, $data)
         "status" => true,
         "message" => "Post YEST"
     ];
-    if (!$obj) {
-        print_r(json_encode($res));
+    if ($notPrint === false) {
+        if (!$obj) {
+            print_r(json_encode($res));
+        } else {
+            print_r(json_encode($res2));
+        }
     } else {
-        print_r(json_encode($res2));
-    }
-
-
-}
-
-function getUser($con, $id, $notPrint=false){
-    $sql = "SELECT * FROM users WHERE `id`=$id";
-    $query = $con->prepare($sql);
-    $query->execute();
-    dbCheckError($query);
-    $obj = $query->fetch();
-    dbCheckError($query);
-    if ($notPrint===false){
-        print_r(json_encode($obj));
-    }else{
         return $obj;
     }
 
 
 }
 
+function getUser($con, $id, $notPrint = false)
+{
+    $sql = "SELECT * FROM users WHERE `id`=$id";
+    $query = $con->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    $obj = $query->fetch();
+    dbCheckError($query);
+    if ($notPrint === false) {
+        print_r(json_encode($obj));
+    } else {
+        return $obj;
+    }
+}
+
+function logOut()
+{
+    session_destroy();
+    http_response_code(200);
+    $res = [
+        'out' => 'true'
+    ];
+    print_r(json_encode($res));
+}
+
+function logIn($con, $data)
+{
+    $email = $data['email'];
+    $password = $data['password'];
+    $sql = "SELECT * FROM users WHERE `email`= '$email'";
+    $query = $con->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    $obj = $query->fetch();
+    dbCheckError($query);
+    $res = [
+        "status" => false,
+        "message" => "Neverno"
+    ];
+    $res2 = [
+        "status" => true,
+
+    ];
+    if (!$obj) {
+        print_r(json_encode($res));
+    } else {
+        if ($password == $obj['password']) {
+
+            $_SESSION['user_id'] = $obj['id'];
+            $_SESSION['admin'] = $obj['admin'];
+            $_SESSION['username'] = $obj['username'];
+
+
+            print_r(json_encode($res2 + $_SESSION));
+        } else {
+            print_r(json_encode($res));
+        }
+
+    }
+}
 
 
 

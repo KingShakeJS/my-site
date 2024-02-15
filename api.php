@@ -59,20 +59,21 @@ if ($method === 'GET') {
 
 if ($method === 'POST') {
     if ($type === 'reg-users') {
-        getUsersWhere($con, $_POST);
+        getUsersWhere($con, $_POST, false);
     }
 }
-function si(){
-    global $isReg;
-    $isReg=['f'=>5];
-}
-
-
 if ($method === 'GET') {
-    if ($type === 'session-users') {
-        print_r($_SESSION);
+    if ($type === 'out-users') {
+        logOut();
     }
 }
+if ($method === 'POST') {
+    if ($type === 'log-in-users') {
+        logIn($con, $_POST);
+    }
+}
+
+
 
 
 

@@ -1,8 +1,6 @@
+const BASE_URL = 'http://localhost:63342/my-site/assets/HTML/'
 
-const BASE_URL='http://localhost:63342/my-site/assets/HTML/'
-
-let isLogIn=null
-
+let isLogIn = null
 
 
 async function getUsers() {
@@ -28,15 +26,15 @@ async function createUser(inputData) {
     })
     const data = await res.json()
     if (data.status === true) {
-        isLogIn={
-            'user_id' : data.user_id,
-            'admin' : data.admin,
-            'username' : data.username,
+        isLogIn = {
+            'user_id': data.user_id,
+            'admin': data.admin,
+            'username': data.username,
         }
-        localStorage.setItem("isLogInKey",JSON.stringify(isLogIn))
+        localStorage.setItem("isLogInKey", JSON.stringify(isLogIn))
     }
 
-    
+
 }
 
 async function updateUser(id, data) {
@@ -68,10 +66,6 @@ async function deleteUser(id) {
 
 async function getUsersWhere(whereDate) {
 
-    // let whereDate = {
-    //     'email': "ee31"
-    // }
-
     let formData = new FormData()
     for (let key in whereDate) {
         formData.append(key, whereDate[key])
@@ -85,13 +79,34 @@ async function getUsersWhere(whereDate) {
 
 }
 
-
-
-async function isSession() {
-    let res = await fetch('http://localhost/my-site/session-users')
-    let session = await res.json()
-    console.log(session)
+async function logOut() {
+    let res = await fetch(`http://localhost/my-site/out-users`)
+    let data = await res.json()
+    console.log(data)
 }
+async function logIn(whereDate){
+    let formData = new FormData()
+    for (let key in whereDate) {
+        formData.append(key, whereDate[key])
+    }
+    let res = await fetch('http://localhost/my-site/log-in-users', {
+        method: 'POST',
+        body: formData
+    })
+    let data = await res.json()
+
+    if (data.status === true) {
+        isLogIn = {
+            'user_id': data.user_id,
+            'admin': data.admin,
+            'username': data.username,
+        }
+        localStorage.setItem("isLogInKey", JSON.stringify(isLogIn))
+    }
+    console.log(isLogIn)
+    return data.status
+}
+
 
 
 
