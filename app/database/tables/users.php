@@ -1,7 +1,7 @@
 <?php
 
-//global $con;
-//require 'connect.php';
+session_start();
+
 
 function test($value)
 {
@@ -27,22 +27,20 @@ function dbCheckError($query)
 }
 
 //получение данных одной таблицы//////////////////////////////////////
-function selectAllOrOneId($table, $con, $id = null)
+function getUsers($con)
 {
-    $sql = "SELECT * FROM $table";
 
-    if ($id) {
-        $sql = $sql . " WHERE id = $id";
-    }
+    $sql = "SELECT * FROM users";
     $query = $con->prepare($sql);
     $query->execute();
-    dbCheckError($query);
-    $date = $query->fetchAll();
-    return print_r(json_encode($date));
+    $data = $query->fetchAll();
+
+
+    print_r(json_encode($data));
 }
 
 //создать запись/////////////////////////////////////////////////
-function createData($table, $con, $data)
+function createUser($con, $data)
 {
     $i = 0;
     $col = '';
@@ -55,28 +53,37 @@ function createData($table, $con, $data)
             $col = $col . ", $key";
             $mask = $mask . ", '$value'";
         }
-
         $i++;
     }
-    $sql = "INSERT INTO $table ($col) VALUES ($mask)";
+    $sql = "INSERT INTO users ($col) VALUES ($mask)";
     $query = $con->prepare($sql);
     $query->execute();
-    dbCheckError($query);
     http_response_code(201);
     $res = [
         "status" => true,
         "post_id" => $con->lastInsertId()
     ];
-    print_r(json_encode($res));
 
-    return $con->lastInsertId();
+
+    $lastInsertUserId = $con->lastInsertId();
+    $user = getUser($con, $lastInsertUserId, true);
+
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['admin'] = $user['admin'];
+    $_SESSION['username'] = $user['username'];
+
+
+    print_r(json_encode($res + $_SESSION));
+
+
+//    print_r(json_encode($res));
+
 }
-
 
 
 //редактирование данных в строке///////////////////////////////////////////////
 
-function updateDate($table, $id, $con, $data)
+function updateUser($id, $con, $data)
 {
     $i = 0;
     $str = '';
@@ -91,7 +98,7 @@ function updateDate($table, $id, $con, $data)
 
         $i++;
     }
-    $sql = "UPDATE $table SET $str WHERE id=$id";
+    $sql = "UPDATE users SET $str WHERE id=$id";
     $query = $con->prepare($sql);
     $query->execute();
     dbCheckError($query);
@@ -103,9 +110,11 @@ function updateDate($table, $id, $con, $data)
     print_r(json_encode($res));
 }
 
-function deleteData($table, $id, $con)
+
+//удаление пользователя
+function deleteUser($id, $con)
 {
-    $sql = "DELETE FROM $table WHERE `id`=$id";
+    $sql = "DELETE FROM users WHERE `id`=$id";
     $query = $con->prepare($sql);
     $query->execute();
     dbCheckError($query);
@@ -118,9 +127,9 @@ function deleteData($table, $id, $con)
 
 
 //получить строки по любым параметрам////////////////////////////////////////////////
-function getWhere($table, $con, $data)
+function getUsersWhere($con, $data)
 {
-    $sql = "SELECT * FROM $table";
+    $sql = "SELECT * FROM users";
     $i = 0;
     foreach ($data as $key => $value) {
         if ($i === 0) {
@@ -136,19 +145,39 @@ function getWhere($table, $con, $data)
     dbCheckError($query);
     $obj = $query->fetchAll();
     dbCheckError($query);
-    if ($obj === []) {
-        http_response_code(404);
-        $res = [
-            "status" => false,
-            "message" => "Post NET"
-        ];
-        echo json_encode($res);
-
+    $res = [
+        "status" => false,
+        "message" => "Post NET"
+    ];
+    $res2 = [
+        "status" => true,
+        "message" => "Post YEST"
+    ];
+    if (!$obj) {
+        print_r(json_encode($res));
     } else {
-
-        print_r(json_encode($obj));
+        print_r(json_encode($res2));
     }
+
+
 }
+
+function getUser($con, $id, $notPrint=false){
+    $sql = "SELECT * FROM users WHERE `id`=$id";
+    $query = $con->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    $obj = $query->fetch();
+    dbCheckError($query);
+    if ($notPrint===false){
+        print_r(json_encode($obj));
+    }else{
+        return $obj;
+    }
+
+
+}
+
 
 
 

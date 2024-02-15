@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $driver = 'mysql';
 $host = 'localhost';
 $dbname = 'my-site';

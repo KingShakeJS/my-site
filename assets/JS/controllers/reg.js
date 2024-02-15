@@ -14,12 +14,12 @@ regButton.addEventListener('click', () => {
     const secondPass = secondPassword.value
     if (secondPass === '' || inputData.username === '' || inputData.password === '' || inputData.email === '') {
         regError.innerText = "заполни все поля"
-        password.value=''
-        secondPassword.value=''
+        password.value = ''
+        secondPassword.value = ''
     } else if (inputData.password !== secondPass) {
         regError.innerText = "пароли должны совпадать"
-        password.value=''
-        secondPassword.value=''
+        password.value = ''
+        secondPassword.value = ''
     } else {
         proverka(inputData)
     }
@@ -30,14 +30,16 @@ async function proverka(inputData) {
     const whereDate = {
         email: inputData.email,
     }
-    let bool = await getWhere(whereDate)
+    let bool = await getUsersWhere(whereDate)
     if (bool === false) {
         // создать пользователя
-        createData(inputData)
+        createUser(inputData)
         username.value = ''
         email.value = ''
         password.value = ''
         secondPassword.value = ''
+        regError.innerText =''
+        window.location.href = BASE_URL + 'index.html';
     } else {
         regError.innerText = "пользователь с такой почтой уже зарегистрирован"
     }
