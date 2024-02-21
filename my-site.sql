@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Фев 15 2024 г., 21:50
+-- Время создания: Фев 21 2024 г., 11:08
 -- Версия сервера: 8.0.31
 -- Версия PHP: 7.4.33
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- База данных: `my-site`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int NOT NULL,
+  `name` varchar(121) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`) VALUES
+(1, 'kjhkhjkhjk', 'hjkhjkhjk'),
+(2, 'hjkhjkhjkh', 'kjhkhjk'),
+(3, 'sds', 'sddd'),
+(4, 'ghjgh', 'jgh'),
+(5, 'ghjghhjkhj', 'jgh'),
+(6, 'f', 'f'),
+(7, 'hgjhgjgh', 'jghj'),
+(8, 'dsfsdfsdf', 'sdfd');
 
 -- --------------------------------------------------------
 
@@ -41,11 +67,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `created`) VALUES
-(1, 0, 'KING', '1@', '12z', '2024-02-15 21:24:16');
+(1, 0, '1', '1', '1', '2024-02-20 16:01:41'),
+(2, 1, '2', '2', '2', '2024-02-20 16:01:59');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Индексы таблицы `users`
@@ -59,10 +93,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

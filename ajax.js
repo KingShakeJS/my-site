@@ -3,6 +3,7 @@ const BASE_URL = 'http://localhost:63342/my-site/assets/HTML/'
 let isLogIn = null
 
 
+// запросы в users //////////////////////////////////////////////////////////////
 async function getUsers() {
     let res = await fetch('http://localhost/my-site/users')
     let users = await res.json()
@@ -108,11 +109,43 @@ async function logIn(whereDate){
 }
 
 
+// запросы в categories //////////////////////////////////////////////////////////////
 
 
+async function getCategories() {
+    let res = await fetch('http://localhost/my-site/categories')
+    let categories = await res.json()
+    console.log(categories)
+}
+
+async function getCategoriesWhere(whereDate){
+    let formData = new FormData()
+    for (let key in whereDate) {
+        formData.append(key, whereDate[key])
+    }
+    let res = await fetch('http://localhost/my-site/where-categories', {
+        method: 'POST',
+        body: formData
+    })
+    let data = await res.json()
+    // console.log(data)
+    return data.status
+}
+
+async function createCategory(topicsData){
+
+    let formData = new FormData()
+    for (let key in topicsData) {
+        formData.append(key, topicsData[key])
+    }
+    let res = await fetch('http://localhost/my-site/categories', {
+        method: 'POST',
+        body: formData
+    })
+    let data = await res.json()
 
 
-
+}
 
 
 

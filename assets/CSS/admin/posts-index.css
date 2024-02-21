@@ -1,0 +1,35 @@
+/*table{*/
+/*    margin-left: -120px;*/
+/*}*/
+.manage{
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.manage>*{
+    padding: 10px;
+
+
+}
+h2{
+    text-align: center;
+    font-size: xxx-large;
+}
+table tr td {
+    padding-left: 20px;
+}
+.table-title{
+    border-bottom: 2px solid #191970;
+}
+.table-title  td{
+    color:#808000;
+}
+.sidebar{
+    margin: 1rem 0;
+    background-color: #7FFFD4;
+    min-height: 600px;
+}
+.sidebar ul{
+
+    padding: 0;
+    margin-bottom: 20px;
+}
