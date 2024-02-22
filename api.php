@@ -75,12 +75,31 @@ if ($method === 'POST') {
 
 if ($method === 'GET') {
     if ($type === 'categories') {
-        getCategories($con);
+        if (isset($id)){
+            getCategory($con, $id);
+        }else{
+            getCategories($con);
+        }
+
     }
 } elseif ($method === 'POST') {
     if ($type === 'where-categories') {
         getCategorieWhere($con, $_POST, false);
-    }elseif ($type === 'categories'){
+    } elseif ($type === 'categories') {
         createCategory($con, $_POST);
+    }
+} elseif ($method === 'DELETE') {
+    if ($type === 'categories') {
+        if (isset($id)) {
+            deleteCategory($con, $id);
+        }
+    }
+}elseif ($method === 'PUT') {
+    if ($type === 'categories') {
+        if (isset($id)) {
+            $data=file_get_contents('php://input');
+            $data=json_decode($data, true);
+            updateCategory($id, $con, $data);
+        }
     }
 }

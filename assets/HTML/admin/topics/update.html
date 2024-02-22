@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../../../CSS/header.css">
     <link rel="stylesheet" href="../../../CSS/admin/posts-index.css">
     <link rel="stylesheet" href="../../../CSS/footer.css">
+    <link rel="stylesheet" href="../../../CSS/create.css">
 
 
     <script src="../../../../ajax.js"></script>
@@ -64,39 +65,44 @@
     </header>
 
     <main class="main">
-         <div class="container">
-             <div class="row">
-                 <nav class="sidebar col-2">
-                     <ul>
-                         <li><a id="sidebar-posts" href="">Записи</a></li>
-                     </ul>
-                     <ul>
-                         <li><a id="sidebar-users"  href="">Пользователии</a></li>
-                     </ul>
-                     <ul>
-                         <li><a id="sidebar-topics" href="">Категории</a></li>
-                     </ul>
-                 </nav>
-                 <div class="col-10">
-                     <div class="manage">
-                         <a id="create-topics" href="">создать категорию</a>
-                         <a id="manage-topics" href="">управление категориями</a>
-                     </div>
-                     <h2>Управление категориями</h2>
-
-                     <table id="table-categories">
-                         <tr class="table-title">
-                             <td>ID</td>
-                             <td>Название категории</td>
-
-                             <td>Управление</td>
-                             <td></td>
-                         </tr>
-                     </table>
-                 </div>
-             </div>
-         </div>
-        
+        <div class="container">
+            <div class="row">
+                <nav class="sidebar col-2">
+                    <ul>
+                        <li><a id="sidebar-posts" href="">Записи</a></li>
+                    </ul>
+                    <ul>
+                        <li><a id="sidebar-users" href="">Пользователии</a></li>
+                    </ul>
+                    <ul>
+                        <li><a id="sidebar-topics" href="">Категории</a></li>
+                    </ul>
+                </nav>
+                <div class="col-10">
+                    <div class="manage">
+                        <a id="create-topics" href="">создать категорию</a>
+                        <a id="manage-topics" href="">управление категориями</a>
+                    </div>
+                    <h2>Редактирование категории</h2>
+                    <div class="row add-post">
+                        <div class="create-form">
+                            <div id="error">
+                                <!--         сообщение об ошибке-->
+                            </div>
+                            <div>
+                                <h4>название категории</h4>
+                                <input id="create-name" type="text">
+                            </div>
+                            <div>
+                                <h4>описание категории</h4>
+                                <textarea  id="create-description" cols="30" rows="10"></textarea>
+                            </div>
+                            <button id="create-add" class="add">Изменить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
     <div id="name">
@@ -112,8 +118,8 @@
     </footer>
 
 </div>
+
 <script src="./../../../JS/controllers/header.js"></script>
 <script src="./../../../JS/controllers/admin/topics.js"></script>
 <script src="./../../../JS/controllers/admin/side-bar.js"></script>
-
 

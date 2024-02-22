@@ -9,6 +9,15 @@ function getCategories($con)
     $data = $query->fetchAll();
     print_r(json_encode($data));
 }
+function getCategory($con, $id)
+{
+    $sql = "SELECT * FROM categories WHERE id=$id";
+
+    $query = $con->prepare($sql);
+    $query->execute();
+    $data = $query->fetch();
+    print_r(json_encode($data));
+}
 
 function getCategorieWhere($con, $data, $notPrint = false)
 {
@@ -58,6 +67,47 @@ function createCategory($con, $data)
     $res = [
         "status" => false,
         "message" => "Post Sozdan"
+    ];
+    print_r(json_encode($res));
+}
+
+function deleteCategory($con, $id){
+    $sql = "DELETE FROM categories WHERE `id`=$id";
+    $query = $con->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    $res = [
+        "status" => true,
+        "message" => 'category is ydalen'
+    ];
+    print_r(json_encode($res));
+}
+
+function updateCategory($id, $con, $data)
+{
+
+    $i = 0;
+    $str = '';
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+
+            $str = $str . $key . " = '" . $value . "'";
+        } else {
+
+            $str = $str . ", " . $key . " = '$value'";
+        }
+
+        $i++;
+    }
+    $sql = "UPDATE categories SET $str WHERE id=$id";
+
+    $query = $con->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    http_response_code(200);
+    $res = [
+        "status" => true,
+        "message" => 'category is pomenan'
     ];
     print_r(json_encode($res));
 }

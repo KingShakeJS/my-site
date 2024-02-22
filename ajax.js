@@ -115,7 +115,8 @@ async function logIn(whereDate){
 async function getCategories() {
     let res = await fetch('http://localhost/my-site/categories')
     let categories = await res.json()
-    console.log(categories)
+    // console.log(categories)
+    return categories
 }
 
 async function getCategoriesWhere(whereDate){
@@ -147,5 +148,37 @@ async function createCategory(topicsData){
 
 }
 
+async function deleteCategory(id) {
+    // console.log(id)
+    const res = await fetch(`http://localhost/my-site/categories/${id}`, {
+        method: 'DELETE'
+    })
+    const data = await res.json()
+    if (data.status === true) {
 
+    }
+}
+
+async function getCategory(id){
+    const res = await fetch(`http://localhost/my-site/categories/${id}`)
+    const data = await res.json()
+    // console.log(data)
+    return data
+}
+async function updateCategory(id, data) {
+    // const data = {
+    //     admin: 12,
+    //     username: 'fsssfssssss',
+    //     password: 'ssssfssssss',
+    // }
+
+    const res = await fetch(`http://localhost/my-site/categories/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(data)
+    })
+    let resData = await res.json()
+    if (resData.status === true) {
+
+    }
+}
 
