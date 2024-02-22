@@ -1,6 +1,7 @@
 var user = JSON.parse(localStorage.getItem("isLogInKey"));
 let upravlenie = document.getElementById('upravlenie')
-
+let logo = document.getElementById('href-logo')
+logo.href=`${BASE_URL}`
 
 // localStorage.removeItem('isLogInKey')
 
